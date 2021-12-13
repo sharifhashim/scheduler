@@ -3,7 +3,7 @@ import axios from 'axios';
 import "components/Application.scss";
 import DayList from 'components/DayList';
 import Appointment from "components/Appointment"
-import {getAppointmentsForDay, getInterview} from "../helpers/selectors"
+import {getAppointmentsForDay, getInterview, getInterviewersForDay} from "../helpers/selectors"
 
 export default function Application(props) {
   const [state, setState] = useState({ 
@@ -13,6 +13,7 @@ export default function Application(props) {
     interviewers: {}
   });
   const dailyAppointments = getAppointmentsForDay( state, state.day );
+  const dailyInterviewers = getAppointmentsForDay( state, state.day)
   const setDay = day => setState(prev => ({ ...prev, day }));
   // const setDays = (days) => {
   //   setState({...state, days})
@@ -59,7 +60,7 @@ export default function Application(props) {
           const interview = getInterview(state, appoint.interview)
           return (
 
-            <Appointment key={appoint.id} id={appoint.id} time={appoint.time} interview={interview} />)}
+            <Appointment key={appoint.id} id={appoint.id} time={appoint.time} interview={interview} interviewers={dailyInterviewers}/>)}
           )}
         {/* Replace this with the schedule elements durint the "The Scheduler" activity. */}
       </section>
