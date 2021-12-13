@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import "components/Application.scss";
 import DayList from 'components/DayList';
-import Appointment from "components/Appointment"
-import {getAppointmentsForDay, getInterview, getInterviewersForDay} from "../helpers/selectors"
+import Appointment from "components/Appointment";
+import {getAppointmentsForDay, getInterview, getInterviewersForDay} from "../helpers/selectors";
 
 export default function Application(props) {
   const [state, setState] = useState({ 
@@ -13,12 +13,31 @@ export default function Application(props) {
     interviewers: {}
   });
   const dailyAppointments = getAppointmentsForDay( state, state.day );
-  const dailyInterviewers = getInterviewersForDay( state, state.day)
+  const dailyInterviewers = getInterviewersForDay( state, state.day);
   const setDay = day => setState(prev => ({ ...prev, day }));
   // const setDays = (days) => {
   //   setState({...state, days})
   // }
-  
+  const bookInterview = function(id, interview) {
+    //console.log(id, interview)
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+    return axios.put(`/api/appointments/${id}`, {
+      interview
+    })
+    .then(() => {
+      setState({
+        ...state,
+        appointments
+      })
+    })
+  };
   
 
   useEffect(() => {
@@ -60,7 +79,7 @@ export default function Application(props) {
           const interview = getInterview(state, appoint.interview)
           return (
 
-            <Appointment key={appoint.id} id={appoint.id} time={appoint.time} interview={interview} interviewers={dailyInterviewers}/>)}
+            <Appointment key={appoint.id} id={appoint.id} time={appoint.time} interview={interview} interviewers={dailyInterviewers} bookInterview={bookInterview}/>)}
           )}
         {/* Replace this with the schedule elements durint the "The Scheduler" activity. */}
       </section>
