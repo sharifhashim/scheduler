@@ -38,7 +38,23 @@ export default function Application(props) {
       })
     })
   };
-  
+  const cancelInterview = function(id) {
+    const appointment = {
+      ...state.appointments[id],
+      interview: null
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]:  appointment
+    };
+    return axios.delete(`/api/appointments/${id}`)
+    .then(() => {
+      setState({
+        ...state,
+        appointments
+      })
+    })
+  }
 
   useEffect(() => {
     Promise.all([
@@ -79,7 +95,15 @@ export default function Application(props) {
           const interview = getInterview(state, appoint.interview)
           return (
 
-            <Appointment key={appoint.id} id={appoint.id} time={appoint.time} interview={interview} interviewers={dailyInterviewers} bookInterview={bookInterview}/>)}
+            <Appointment 
+            key={appoint.id} 
+            id={appoint.id} 
+            time={appoint.time} 
+            interview={interview} 
+            interviewers={dailyInterviewers} 
+            bookInterview={bookInterview} 
+            cancelInterview={cancelInterview} 
+            />)}
           )}
         {/* Replace this with the schedule elements durint the "The Scheduler" activity. */}
       </section>
