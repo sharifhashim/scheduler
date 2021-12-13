@@ -13,7 +13,7 @@ export default function Application(props) {
     interviewers: {}
   });
   const dailyAppointments = getAppointmentsForDay( state, state.day );
-  const dailyInterviewers = getAppointmentsForDay( state, state.day)
+  const dailyInterviewers = getInterviewersForDay( state, state.day)
   const setDay = day => setState(prev => ({ ...prev, day }));
   // const setDays = (days) => {
   //   setState({...state, days})
