@@ -56,6 +56,7 @@ export default function Application(props) {
             cancelInterview={cancelInterview} 
             />)}
           )}
+          <Appointment key="last" time="5pm" />
         {/* Replace this with the schedule elements durint the "The Scheduler" activity. */}
       </section>
     </main>
