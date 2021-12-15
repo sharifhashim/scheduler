@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import axios from 'axios';
+import React from "react";
 import "components/Application.scss";
 import DayList from 'components/DayList';
 import Appointment from "components/Appointment";
@@ -57,7 +56,6 @@ export default function Application(props) {
             />)}
           )}
           <Appointment key="last" time="5pm" />
-        {/* Replace this with the schedule elements durint the "The Scheduler" activity. */}
       </section>
     </main>
   );
