@@ -8,22 +8,22 @@ export default function useApplicationData(initial) {
     appointments: {},
     interviewers: {}
   });
+  
   const updateSpots = function(id, action) {
     for (const day of state.days) {
       for (const appointment of day.appointments) {
         if (appointment === id) {
           if (action === "book") {
-            //onsole.log(day.name)
             day.spots -= 1;
-          }
+          };
           if (action === "cancel") {
-            //console.log(day.name)
             day.spots += 1;
-          }
-        }
-      }
-    }
-  }
+          };
+        };
+      };
+    };
+  };
+
   const setDay = day => setState(prev => ({ ...prev, day }));
 
   const bookInterview = function(id, interview) {
@@ -73,10 +73,9 @@ export default function useApplicationData(initial) {
       axios.get("api/appointments"),
       axios.get("api/interviewers")
     ]).then((all) => {
-      //console.log(all[2].data)
       setState(prev => ({...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data}))
     })
-  }, [])
+  }, []);
 
   return { state, setDay, bookInterview, cancelInterview }
 }
