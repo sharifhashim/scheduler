@@ -21,3 +21,6 @@ npm test
 ```sh
 npm run storybook
 ```
+!["List of scheduled appointments for selected day"]("https://github.com/sharifhashim/scheduler/blob/master/docs/List-Interviews.png?raw=true")
+
+!["View of appointment form when editing an appointment or creating a new one"]("https://github.com/sharifhashim/scheduler/blob/master/docs/appointment-form.png?raw=true")
