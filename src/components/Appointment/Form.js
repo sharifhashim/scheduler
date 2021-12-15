@@ -24,7 +24,6 @@ export default function Form(props) {
     props.onCancel()
   }
   const save = () => {
-    //props.onSave(student, interviewer)
     validate()
   }
   return (
@@ -47,13 +46,12 @@ export default function Form(props) {
         onChange={setInterviewer}
         value={interviewer}
         onSave={props.onSave}
-      /* your code goes here */
         />
       </section>
       <section className="appointment__card-right">
         <section className="appointment__actions">
-          <Button danger  onClick={cancel}>Cancel</Button> {/* your code goes here */}
-          <Button confirm onClick={save}>Save</Button> {/* your code goes here */}
+          <Button danger  onClick={cancel}>Cancel</Button> 
+          <Button confirm onClick={save}>Save</Button> 
         </section>
       </section>
     </main>
