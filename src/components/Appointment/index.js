@@ -85,7 +85,10 @@ export default function Appointment(props) {
         <Error message="Could not cancel appointment" onClose={back} />
       )}
       {mode === ERROR_SAVE && (
-        <Error message="Could not save appointment" onClose={back} />
+        <Error
+          message="Could not save appointment"
+          onClose={() => transition(EDIT)}
+        />
       )}
     </article>
   );
