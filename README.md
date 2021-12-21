@@ -22,7 +22,24 @@ npm test
 npm run storybook
 ```
 
-## Final Product
-!["List of scheduled appointments for selected day"]("https://github.com/sharifhashim/scheduler/blob/master/docs/list-interviews.png?raw=true")
+## Dependencies
 
-!["View of appointment form when editing an appointment or creating a new one"]("https://github.com/sharifhashim/scheduler/blob/master/docs/appointment-form.png?raw=true")
+- Axios
+- Classnames
+- Normalize CSS
+- React
+- React-DOM
+- React-Scripts
+- Babel
+- Storybook
+- Cypress
+- Node-Sass
+- Prop-types
+- React-test-renderer
+- @testing-library/react
+
+## Final Product
+
+!["List of scheduled appointments for selected day"]("https://raw.github.com/sharifhashim/scheduler/blob/master/docs/list-interviews.png?raw=true")
+
+!["View of appointment form when editing an appointment or creating a new one"]("https://raw.github.com/sharifhashim/scheduler/blob/master/docs/appointment-form.png?raw=true")
